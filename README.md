@@ -29,11 +29,8 @@
   - エラー時に`panic!`する場合 : `unwrap()`, `expect()`
   - エラー処理を上位に委ねる場合 : `?`演算子
 
-- `Option`と`Result`の変換
-  - 以下のダイアグラムを参照
+- [OptionとResultの変換](https://docs.google.com/drawings/d/1EOPs0YTONo_FygWbuJGPfikO9Myt5HwtiFUHRuE1JVM/preview)
   - `as_ref()`を使うことで、`Option`への参照を参照への`Option`に変換できる
-
-![OptionとResultの変換](https://docs.google.com/drawings/d/1EOPs0YTONo_FygWbuJGPfikO9Myt5HwtiFUHRuE1JVM/preview)
 
 - 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目３
 
