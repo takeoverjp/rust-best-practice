@@ -6,6 +6,9 @@
   - [`Option`と`Result`は`match`を用いずに変換する](#optionとresultはmatchを用いずに変換する)
   - [ライブラリでは、`thiserror`クレートを使って具体的で詳細なエラー情報を呼び出し側に伝える](#ライブラリではthiserrorクレートを使って具体的で詳細なエラー情報を呼び出し側に伝える)
   - [アプリケーションでは、`anyhow`クレートを使ってすべての依存ライブラリのエラーを一貫した方法で処理する](#アプリケーションではanyhowクレートを使ってすべての依存ライブラリのエラーを一貫した方法で処理する)
+- [CI](#ci)
+  - [`cargo udeps`で不必要な依存クレートをチェックする](#cargo-udepsで不必要な依存クレートをチェックする)
+  - [`cargo deny`で依存クレートをチェックする](#cargo-denyで依存クレートをチェックする)
 
 
 ## 本リポジトリの目的
@@ -19,6 +22,7 @@
 
 - [Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)
 - [Rust for Rustaceans](https://rust-for-rustaceans.com/)
+- [Comprehensive Rust](https://google.github.io/comprehensive-rust/)
 
 ## エラーハンドリング
 
@@ -46,5 +50,23 @@
 
 - `anyhow`クレートは、エラーをトレイトオブジェクトとして扱うため、依存するすべてのライブラリのエラーを単純に一貫して扱うことができる
 - `thiserror`クレートは、元になるエラーが複数あり、それらの型を保持する必要があるときに使う
+
+- 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目４
+
+## CI
+
+### `cargo udeps`で不必要な依存クレートをチェックする
+
+- `cargo udeps`により、リファクタリング等で不要となった依存に気づくことができる
+
+- 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目４
+
+### `cargo deny`で依存クレートをチェックする
+
+- `cargo deny`で依存クレートに対して下記のようなチェックができる
+  - 使用されているバージョンに既知のセキュリティ問題がある依存ライブラリ
+  - 受入不能なライセンスで提供されている依存ライブラリ
+  - ただ受け入れられない依存ライブラリ
+  - 依存グラフ中で、複数の異なるバージョンが使われている依存ライブラリ
 
 - 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目４
