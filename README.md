@@ -2,6 +2,8 @@
 
 - [本リポジトリの目的](#本リポジトリの目的)
 - [参考文献](#参考文献)
+- [API設計](#api設計)
+  - [APIを定義する場合は、Rust API Guidelinesに従う](#apiを定義する場合はrust-api-guidelinesに従う)
 - [標準ライブラリ内のトレイト](#標準ライブラリ内のトレイト)
   - [自分が実装するクロージャは`Fn` \> `FnMut` \> `FnOnce`の順に優先し、トレイト境界への指定は、`FnOnce` \> `FnMut` \> `Fn`の順に優先する](#自分が実装するクロージャはfn--fnmut--fnonceの順に優先しトレイト境界への指定はfnonce--fnmut--fnの順に優先する)
 - [エラーハンドリング](#エラーハンドリング)
@@ -19,12 +21,26 @@
 
 - 記載ルール
   - 関連する資料を可能な限り参照する
+  - clippy等を使って機械的にチェックできるものは、その手段も記載する
 
 ## 参考文献
 
 - [Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)
 - [Rust for Rustaceans](https://rust-for-rustaceans.com/)
 - [Comprehensive Rust](https://google.github.io/comprehensive-rust/)
+- [Rust API Guidelines](https://rust-lang.github.io/api-guidelines/)
+- Rustにおける破壊的変更
+  - [Rust RFC 1105](https://rust-lang.github.io/rfcs/1105-api-evolution.html)
+  - [The Cargo Book on SemVer compatibility](https://doc.rust-lang.org/cargo/reference/semver.html)
+
+## API設計
+
+### APIを定義する場合は、[Rust API Guidelines](https://rust-lang.github.io/api-guidelines/)に従う
+
+- まずは一通り目を通して理解をする
+- 実際の設計時には、各APIに対して[チェックリスト](https://rust-lang.github.io/api-guidelines/checklist.html)でチェックする
+
+- 参考：[Rust for Rustaceans](https://rust-for-rustaceans.com/)のChapter 3 "Designing Interfaces"
 
 ## 標準ライブラリ内のトレイト
 
