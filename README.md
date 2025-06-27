@@ -4,6 +4,7 @@
 - [参考文献](#参考文献)
 - [API設計](#api設計)
   - [APIを定義する場合は、Rust API Guidelinesに従う](#apiを定義する場合はrust-api-guidelinesに従う)
+  - [関数の引数では、所有型の借用より、借用型を優先する (`&str` \> `&String`, `&[T]` \> `&Vec<T>`, `&T` \> `&Box<T>`)](#関数の引数では所有型の借用より借用型を優先する-str--string-t--vect-t--boxt)
 - [標準ライブラリ内のトレイト](#標準ライブラリ内のトレイト)
   - [自分が実装するクロージャは`Fn` \> `FnMut` \> `FnOnce`の順に優先し、トレイト境界への指定は、`FnOnce` \> `FnMut` \> `Fn`の順に優先する](#自分が実装するクロージャはfn--fnmut--fnonceの順に優先しトレイト境界への指定はfnonce--fnmut--fnの順に優先する)
 - [エラーハンドリング](#エラーハンドリング)
@@ -32,6 +33,7 @@
 - Rustにおける破壊的変更
   - [Rust RFC 1105](https://rust-lang.github.io/rfcs/1105-api-evolution.html)
   - [The Cargo Book on SemVer compatibility](https://doc.rust-lang.org/cargo/reference/semver.html)
+- [Rust Design Patterns](https://rust-unofficial.github.io/patterns/)
 
 ## API設計
 
@@ -41,6 +43,12 @@
 - 実際の設計時には、各APIに対して[チェックリスト](https://rust-lang.github.io/api-guidelines/checklist.html)でチェックする
 
 - 参考：[Rust for Rustaceans](https://rust-for-rustaceans.com/)のChapter 3 "Designing Interfaces"
+
+### 関数の引数では、所有型の借用より、借用型を優先する (`&str` > `&String`, `&[T]` > `&Vec<T>`, `&T` > `&Box<T>`)
+
+- `&str`であれば文字列リテラル(`&'static str`)やslice(`&str`)も受け取ることができるが、`&String`では受け取れない
+
+- 参考：[Use borrowed types for arguments](https://rust-unofficial.github.io/patterns/idioms/coercion-arguments.html)
 
 ## 標準ライブラリ内のトレイト
 
