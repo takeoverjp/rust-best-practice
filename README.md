@@ -38,6 +38,7 @@
   - [The Cargo Book on SemVer compatibility](https://doc.rust-lang.org/cargo/reference/semver.html)
 - [Rust Design Patterns](https://rust-unofficial.github.io/patterns/)
 - [Clippy Lints](https://rust-lang.github.io/rust-clippy/master/)
+- [Rust Cook Book](https://rust-lang-nursery.github.io/rust-cookbook/)
 
 ## API設計
 
