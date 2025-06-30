@@ -7,6 +7,8 @@
   - [関数の引数では、所有型の借用より、借用型を優先する (`&str` \> `&String`, `&[T]` \> `&Vec<T>`, `&T` \> `&Box<T>`)](#関数の引数では所有型の借用より借用型を優先する-str--string-t--vect-t--boxt)
 - [標準ライブラリ内のトレイト](#標準ライブラリ内のトレイト)
   - [自分が実装するクロージャは`Fn` \> `FnMut` \> `FnOnce`の順に優先し、トレイト境界への指定は、`FnOnce` \> `FnMut` \> `Fn`の順に優先する](#自分が実装するクロージャはfn--fnmut--fnonceの順に優先しトレイト境界への指定はfnonce--fnmut--fnの順に優先する)
+- [型変換](#型変換)
+  - [`as`によるキャストではなく、`from`/`into`による変換を使用する](#asによるキャストではなくfromintoによる変換を使用する)
 - [エラーハンドリング](#エラーハンドリング)
   - [`Option`と`Result`は`match`を用いずに変換する](#optionとresultはmatchを用いずに変換する)
   - [ライブラリでは、`thiserror`クレートを使って具体的で詳細なエラー情報を呼び出し側に伝える](#ライブラリではthiserrorクレートを使って具体的で詳細なエラー情報を呼び出し側に伝える)
@@ -34,6 +36,7 @@
   - [Rust RFC 1105](https://rust-lang.github.io/rfcs/1105-api-evolution.html)
   - [The Cargo Book on SemVer compatibility](https://doc.rust-lang.org/cargo/reference/semver.html)
 - [Rust Design Patterns](https://rust-unofficial.github.io/patterns/)
+- [Clippy Lints](https://rust-lang.github.io/rust-clippy/master/)
 
 ## API設計
 
@@ -62,6 +65,18 @@
 - `FnOnce` : 所有権をmoveするので、１回しか呼び出せない（⇒再帰呼出しもできない）
 
 - 参考：[Comprehensive Rust - Closures](https://google.github.io/comprehensive-rust/ja/std-traits/closures.html)
+
+## 型変換
+
+### `as`によるキャストではなく、`from`/`into`による変換を使用する
+
+- 検出方法：[clippyの`as_conversions`](https://rust-lang.github.io/rust-clippy/master/#as_conversions)
+
+- `as`によるキャストは、データが失われる変換も許されるため、一貫性と安全性のために避けるべき
+- キャストのセマンティクスを完全に理解し、かつ、Cとの互換性などのために必要なときのみ`as`を使用する
+
+- 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目５
+- 参考：[Let’s deprecate `as` for lossy numeric casts](https://internals.rust-lang.org/t/lets-deprecate-as-for-lossy-numeric-casts/16283)
 
 ## エラーハンドリング
 
