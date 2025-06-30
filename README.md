@@ -7,8 +7,9 @@
   - [関数の引数では、所有型の借用より、借用型を優先する (`&str` \> `&String`, `&[T]` \> `&Vec<T>`, `&T` \> `&Box<T>`)](#関数の引数では所有型の借用より借用型を優先する-str--string-t--vect-t--boxt)
 - [標準ライブラリ内のトレイト](#標準ライブラリ内のトレイト)
   - [自分が実装するクロージャは`Fn` \> `FnMut` \> `FnOnce`の順に優先し、トレイト境界への指定は、`FnOnce` \> `FnMut` \> `Fn`の順に優先する](#自分が実装するクロージャはfn--fnmut--fnonceの順に優先しトレイト境界への指定はfnonce--fnmut--fnの順に優先する)
-- [型変換](#型変換)
+- [型](#型)
   - [`as`によるキャストではなく、`from`/`into`による変換を使用する](#asによるキャストではなくfromintoによる変換を使用する)
+  - [セマンティクスを強制すべきときは、プリミティブ型ではなくnewtypeイディオムで定義した専用の型を使う](#セマンティクスを強制すべきときはプリミティブ型ではなくnewtypeイディオムで定義した専用の型を使う)
 - [エラーハンドリング](#エラーハンドリング)
   - [`Option`と`Result`は`match`を用いずに変換する](#optionとresultはmatchを用いずに変換する)
   - [ライブラリでは、`thiserror`クレートを使って具体的で詳細なエラー情報を呼び出し側に伝える](#ライブラリではthiserrorクレートを使って具体的で詳細なエラー情報を呼び出し側に伝える)
@@ -66,7 +67,7 @@
 
 - 参考：[Comprehensive Rust - Closures](https://google.github.io/comprehensive-rust/ja/std-traits/closures.html)
 
-## 型変換
+## 型
 
 ### `as`によるキャストではなく、`from`/`into`による変換を使用する
 
@@ -77,6 +78,23 @@
 
 - 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目５
 - 参考：[Let’s deprecate `as` for lossy numeric casts](https://internals.rust-lang.org/t/lets-deprecate-as-for-lossy-numeric-casts/16283)
+
+### セマンティクスを強制すべきときは、プリミティブ型ではなくnewtypeイディオムで定義した専用の型を使う
+
+- newtypeイディオムで専用型を定義することで、異なるセマンティクスを持った値をコンパイラ・IDEが区別できるようにする
+- プリミティブ型の場合、異なるセマンティクスを持った値を区別する責務が呼び出し側に委ねられてしまう
+
+- 例
+
+```rust
+/// Units for force. 力の単位
+pub struct PoundForceSeconds(pub f64);
+
+/// Units for force. 力の単位
+pub struct NewtonSeconds(pub f64);
+```
+
+- 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目６
 
 ## エラーハンドリング
 
