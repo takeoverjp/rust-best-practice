@@ -5,6 +5,7 @@
 - [API設計](#api設計)
   - [APIを定義する場合は、Rust API Guidelinesに従う](#apiを定義する場合はrust-api-guidelinesに従う)
   - [関数の引数では、所有型の借用より、借用型を優先する (`&str` \> `&String`, `&[T]` \> `&Vec<T>`, `&T` \> `&Box<T>`)](#関数の引数では所有型の借用より借用型を優先する-str--string-t--vect-t--boxt)
+  - [複雑な型にはビルダパターンを使う](#複雑な型にはビルダパターンを使う)
 - [標準ライブラリ内のトレイト](#標準ライブラリ内のトレイト)
   - [自分が実装するクロージャは`Fn` \> `FnMut` \> `FnOnce`の順に優先し、トレイト境界への指定は、`FnOnce` \> `FnMut` \> `Fn`の順に優先する](#自分が実装するクロージャはfn--fnmut--fnonceの順に優先しトレイト境界への指定はfnonce--fnmut--fnの順に優先する)
 - [型](#型)
@@ -54,6 +55,64 @@
 - `&str`であれば文字列リテラル(`&'static str`)やslice(`&str`)も受け取ることができるが、`&String`では受け取れない
 
 - 参考：[Use borrowed types for arguments](https://rust-unofficial.github.io/patterns/idioms/coercion-arguments.html)
+
+### 複雑な型にはビルダパターンを使う
+
+- `struct`を初期化するためには、`Default`トレイトを実装している場合を除いて、すべての要素を書き出さなければならないが、それは煩雑なだけではなくメンバの追加が難しくなる
+- ビルダパターンを使うことで、初期化時の煩雑さを軽減し、メンバの追加も容易になる
+- ビルダパターンには、以下のパターンがある
+  - パターン１：`self`を消費し、`self`を返す
+    - ○：ビルダの構築とセッタの呼出をワンライナーで書ける
+    - ×：ビルダ一つに付き、一回しかアイテムをビルドできない（`Clone`トレイトを実装できるなら、大した問題ではない）
+  - パターン２：排他参照を受け取り、排他参照を返す
+    - ○：ビルダ一つに付き、複数回アイテムをビルドできる
+    - ×：ビルダの構築とセッタの呼出を分けて記述する必要がある
+
+```rust
+// ビルダパターンを使わない例
+```rust
+let me = Details {
+  given_name: "Takeo".to_owned(),
+  preferred_name: Some("Take".to_owned()),
+  middle_name: Some("".to_owned()),
+  family_name: "Kondo".to_owned(),
+  mobile_phone: None,
+  date_of_birth: time::Date::from_calendar_date(
+    1984,
+    time::Month::September,
+    23,
+  )
+  .unwrap(),
+  last_seen: None,
+};
+```
+
+```rust
+// パターン１：`self`を消費し、`self`を返すの例
+let mut builder = DetailsBuilder::new(
+  "Takeo",
+  "Kondo",
+  time::Date::from_calendar_date(1984, time::Month::September, 23).unwrap(),
+);
+if informal {
+  builder = builder.preferred_name("Take");
+}
+let me = builder.build();
+```
+
+```rust
+// パターン２：排他参照を受け取り、排他参照を返す例
+let mut builder = DetailsBuilder::new(
+  "Takeo",
+  "Kondo",
+  time::Date::from_calendar_date(1984, time::Month::September, 23).unwrap(),
+);
+builder.middle_name("the").just_seen();
+if informal {
+  builder.preferred_name("Take");
+}
+let me = builder.build();
+```
 
 ## 標準ライブラリ内のトレイト
 
