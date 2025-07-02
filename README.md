@@ -15,6 +15,8 @@
   - [`Option`と`Result`は`match`を用いずに変換する](#optionとresultはmatchを用いずに変換する)
   - [ライブラリでは、`thiserror`クレートを使って具体的で詳細なエラー情報を呼び出し側に伝える](#ライブラリではthiserrorクレートを使って具体的で詳細なエラー情報を呼び出し側に伝える)
   - [アプリケーションでは、`anyhow`クレートを使ってすべての依存ライブラリのエラーを一貫した方法で処理する](#アプリケーションではanyhowクレートを使ってすべての依存ライブラリのエラーを一貫した方法で処理する)
+- [実装](#実装)
+  - [明示的なループの代わりにイテレータ変換を使う](#明示的なループの代わりにイテレータ変換を使う)
 - [CI](#ci)
   - [`cargo udeps`で不必要な依存クレートをチェックする](#cargo-udepsで不必要な依存クレートをチェックする)
   - [`cargo deny`で依存クレートをチェックする](#cargo-denyで依存クレートをチェックする)
@@ -184,6 +186,27 @@ pub struct NewtonSeconds(pub f64);
 - `thiserror`クレートは、元になるエラーが複数あり、それらの型を保持する必要があるときに使う
 
 - 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目４
+
+## 実装
+
+### 明示的なループの代わりにイテレータ変換を使う
+
+- `for`ループや`while`ループの代わりに、イテレータ変換を使うことで、コードが簡潔になり、パフォーマンスも向上することがある
+- イテレータ変換メソッドが多数用意されているのは、これらを使うことでコードがよりRustらしく、よりコンパクトになり、意図が明確になるため
+
+- イテレータ変換
+  - `take(n)`, `skip(n)`, `step_by(n)`, `chain(other)`, `zip(other)`, `cycle()`, `rev()`, `map(f)`, `cloned()`, `copied()`, `enumerate()`, `zip(it)`, `filter(f)`, `take_while()`, `skip_while()`, `flatten()`
+  - `flatten()`は、`Result`や`Option`のイテレータに対して、`Some(v)`もしくは`Ok(v)`の場合のみ`v`を出力するイテレータにする
+- イテレータ消費
+  - `for_each(f)`, `sum()`, `product()`, `min()`, `max()`, `min_by(f)`, `max_by(f)`, `reduce(f)`, `fold(f)`, `scan(init, f)`
+  - 1つの値を選択するメソッド
+    - `find(p)`, `position(p)`, `nth(n)`
+  - テストを行うメソッド
+    - `all(p)`, `any((p)`
+  - クロージャの失敗を許容するメソッド
+    - `try_fold(f)`, `try_find(f)`, `try_for_each(f)`
+  - 新しいコレクションを作るメソッド
+    - `collect()`, `unzip()`, `partition()`
 
 ## CI
 
