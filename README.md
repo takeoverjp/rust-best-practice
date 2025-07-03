@@ -8,6 +8,7 @@
   - [複雑な型にはビルダパターンを使う](#複雑な型にはビルダパターンを使う)
 - [標準ライブラリ内のトレイト](#標準ライブラリ内のトレイト)
   - [機密情報が含まれない型であれば、`Debug`トレイトを実装する](#機密情報が含まれない型であればdebugトレイトを実装する)
+  - [解放しなければならない何らかの資源を保持する型には`Drop`トレイトを実装し、RAIIにする](#解放しなければならない何らかの資源を保持する型にはdropトレイトを実装しraiiにする)
   - [自分が実装するクロージャは`Fn` \> `FnMut` \> `FnOnce`の順に優先し、トレイト境界への指定は、`FnOnce` \> `FnMut` \> `Fn`の順に優先する](#自分が実装するクロージャはfn--fnmut--fnonceの順に優先しトレイト境界への指定はfnonce--fnmut--fnの順に優先する)
 - [型](#型)
   - [`as`によるキャストではなく、`from`/`into`による変換を使用する](#asによるキャストではなくfromintoによる変換を使用する)
@@ -127,6 +128,12 @@ let me = builder.build();
 - 検出方法：[`rustc` lintの`missing_debug_implementations`](https://doc.rust-lang.org/stable/rustc/lints/listing/allowed-by-default.html#missing-debug-implementations)
 
 - 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目１０
+
+### 解放しなければならない何らかの資源を保持する型には`Drop`トレイトを実装し、RAIIにする
+
+- `Drop`トレイトを実装することで、型のインスタンスがスコープを抜けるときに、自動的に資源を解放することができる
+
+- 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目１２
 
 ### 自分が実装するクロージャは`Fn` > `FnMut` > `FnOnce`の順に優先し、トレイト境界への指定は、`FnOnce` > `FnMut` > `Fn`の順に優先する
 
