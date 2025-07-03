@@ -124,7 +124,7 @@ let me = builder.build();
 - 基本はderiveマクロによる自動導出をする
 - 自動導出だと煩雑すぎる場合は、独自で実装する
 
-- 検出方法：`missing_debug_implementations`
+- 検出方法：[`rustc` lintの`missing_debug_implementations`](https://doc.rust-lang.org/stable/rustc/lints/listing/allowed-by-default.html#missing-debug-implementations)
 
 - 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目１０
 
