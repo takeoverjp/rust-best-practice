@@ -6,6 +6,7 @@
   - [APIを定義する場合は、Rust API Guidelinesに従う](#apiを定義する場合はrust-api-guidelinesに従う)
   - [関数の引数では、所有型の借用より、借用型を優先する (`&str` \> `&String`, `&[T]` \> `&Vec<T>`, `&T` \> `&Box<T>`)](#関数の引数では所有型の借用より借用型を優先する-str--string-t--vect-t--boxt)
   - [複雑な型にはビルダパターンを使う](#複雑な型にはビルダパターンを使う)
+  - [Trait objectとして使用することを想定するTraitは、object-safetyを満たすように設計する](#trait-objectとして使用することを想定するtraitはobject-safetyを満たすように設計する)
 - [標準ライブラリ内のトレイト](#標準ライブラリ内のトレイト)
   - [機密情報が含まれない型であれば、`Debug`トレイトを実装する](#機密情報が含まれない型であればdebugトレイトを実装する)
   - [解放しなければならない何らかの資源を保持する型には`Drop`トレイトを実装し、RAIIにする](#解放しなければならない何らかの資源を保持する型にはdropトレイトを実装しraiiにする)
@@ -117,6 +118,14 @@ if informal {
 }
 let me = builder.build();
 ```
+
+### Trait objectとして使用することを想定するTraitは、[object-safety](https://github.com/rust-lang/rfcs/blob/master/text/0255-object-safety.md)を満たすように設計する
+
+- 同じTraitを実装する異なる型のインスタンスをコレクションに入れるなど、Trait objectとして使うことが想定されるTraitの場合、[object-safety](https://github.com/rust-lang/rfcs/blob/master/text/0255-object-safety.md)を満たすように設計しなければ、利用者がコンパイルエラーに遭遇してしまう
+- object-safetyを満たさないTraitを満たすように修正する場合、破壊的変更を避けるのは難しいので、予めAPI設計時に考慮することが望ましい
+
+- 参考：[Let's Get Rusty - Using Trait Objects in Rust](https://youtu.be/ReBmm0eJg6g?list=PLai5B987bZ9CoVR-QEIN9foz4QCJ0H2Y8&t=743)
+- 参考：[object-safetyの定義]([object-safety](https://github.com/rust-lang/rfcs/blob/master/text/0255-object-safety.md))
 
 ## 標準ライブラリ内のトレイト
 
