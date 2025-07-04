@@ -123,9 +123,13 @@ let me = builder.build();
 
 - 同じTraitを実装する異なる型のインスタンスをコレクションに入れるなど、Trait objectとして使うことが想定されるTraitの場合、[object-safety](https://github.com/rust-lang/rfcs/blob/master/text/0255-object-safety.md)を満たすように設計しなければ、利用者がコンパイルエラーに遭遇してしまう
 - object-safetyを満たさないTraitを満たすように修正する場合、破壊的変更を避けるのは難しいので、予めAPI設計時に考慮することが望ましい
+- object-safetyを満たすためには、以下の２つのルールに従わなければならない
+  - トレイとメソッドはジェネリックであってはならない
+  - トレイとメソッドでは、レシーバ（メソッドの第一引数）以外に、`Self`を含む方を使ってはならない
 
 - 参考：[Let's Get Rusty - Using Trait Objects in Rust](https://youtu.be/ReBmm0eJg6g?list=PLai5B987bZ9CoVR-QEIN9foz4QCJ0H2Y8&t=743)
 - 参考：[object-safetyの定義]([object-safety](https://github.com/rust-lang/rfcs/blob/master/text/0255-object-safety.md))
+- 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目１２
 
 ## 標準ライブラリ内のトレイト
 
