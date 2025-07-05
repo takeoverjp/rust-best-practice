@@ -239,6 +239,10 @@ pub struct NewtonSeconds(pub f64);
   - 新しいコレクションを作るメソッド
     - `collect()`, `unzip()`, `partition()`
 
+### 状態遷移を表現するときは、Typestateパターンを使う
+
+- 参考：[Rust タイプステートパターンによるAPI設計 | Yabutan 技術ブログ ](https://share.google/GqhRWK2ya2hmuKv0f)
+
 ### ジェネリクスとトレイトオブジェクトを適切に使い分ける
 
 - ジェネリクス
