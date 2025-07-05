@@ -131,6 +131,7 @@ let me = builder.build();
 - 参考：[Let's Get Rusty - Using Trait Objects in Rust](https://youtu.be/ReBmm0eJg6g?list=PLai5B987bZ9CoVR-QEIN9foz4QCJ0H2Y8&t=743)
 - 参考：[object-safetyの定義]([object-safety](https://github.com/rust-lang/rfcs/blob/master/text/0255-object-safety.md))
 - 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目１２
+- 参考：[Rust API Guidelines - C-OBJECT](https://rust-lang.github.io/api-guidelines/flexibility.html#traits-are-object-safe-if-they-may-be-useful-as-a-trait-object-c-object)
 
 ## 標準ライブラリ内のトレイト
 
