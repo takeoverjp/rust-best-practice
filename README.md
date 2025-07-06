@@ -1,4 +1,4 @@
-# Rust Best Practices
+a# Rust Best Practices
 
 - [本リポジトリの目的](#本リポジトリの目的)
 - [参考文献](#参考文献)
@@ -132,6 +132,16 @@ let me = builder.build();
 - 参考：[object-safetyの定義]([object-safety](https://github.com/rust-lang/rfcs/blob/master/text/0255-object-safety.md))
 - 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目１２
 - 参考：[Rust API Guidelines - C-OBJECT](https://rust-lang.github.io/api-guidelines/flexibility.html#traits-are-object-safe-if-they-may-be-useful-as-a-trait-object-c-object)
+
+### デフォルト実装を用意することで、実装しなければならないトレイトメソッドを最小限にする
+
+- トレイトには2種類の利用者がいる
+  - トレイトを実装するstructの開発者
+  - トレイトに依存した処理を書く開発者
+- 前者に向けてはトレイトメソッドを少なく、後者に向けてはトレイトメソッドを充実させることが望ましい
+- 実装必須のトレイトメソッドを極少数、それらに依存するデフォルト実装つきのトレイトメソッドを充実させることで、両方の要件を満たすことができる
+
+- 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目１3
 
 ## 標準ライブラリ内のトレイト
 
