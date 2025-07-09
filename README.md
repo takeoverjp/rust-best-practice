@@ -4,9 +4,11 @@ a# Rust Best Practices
 - [参考文献](#参考文献)
 - [API設計](#api設計)
   - [APIを定義する場合は、Rust API Guidelinesに従う](#apiを定義する場合はrust-api-guidelinesに従う)
+  - [値の所有権が必要な場合、参照を受け取って内部で`clone`するのではなく、所有権をとる](#値の所有権が必要な場合参照を受け取って内部でcloneするのではなく所有権をとる)
   - [関数の引数では、所有型の借用より、借用型を優先する (`&str` \> `&String`, `&[T]` \> `&Vec<T>`, `&T` \> `&Box<T>`)](#関数の引数では所有型の借用より借用型を優先する-str--string-t--vect-t--boxt)
   - [複雑な型にはビルダパターンを使う](#複雑な型にはビルダパターンを使う)
   - [Trait objectとして使用することを想定するTraitは、object-safetyを満たすように設計する](#trait-objectとして使用することを想定するtraitはobject-safetyを満たすように設計する)
+  - [デフォルト実装を用意することで、実装しなければならないトレイトメソッドを最小限にする](#デフォルト実装を用意することで実装しなければならないトレイトメソッドを最小限にする)
 - [標準ライブラリ内のトレイト](#標準ライブラリ内のトレイト)
   - [機密情報が含まれない型であれば、`Debug`トレイトを実装する](#機密情報が含まれない型であればdebugトレイトを実装する)
   - [解放しなければならない何らかの資源を保持する型には`Drop`トレイトを実装し、RAIIにする](#解放しなければならない何らかの資源を保持する型にはdropトレイトを実装しraiiにする)
@@ -57,6 +59,13 @@ a# Rust Best Practices
 - 実際の設計時には、各APIに対して[チェックリスト](https://rust-lang.github.io/api-guidelines/checklist.html)でチェックする
 
 - 参考：[Rust for Rustaceans](https://rust-for-rustaceans.com/)のChapter 3 "Designing Interfaces"
+
+### 値の所有権が必要な場合、参照を受け取って内部で`clone`するのではなく、所有権をとる
+
+- 参照を受け取って内部で`clone`する場合、呼び出し側がもう対象の変数が不要であってもメモリコピーを避けることができない
+- 所有権を取るAPIとすることで、呼び出し側が所有権を必要なときだけ`clone`を呼び出すことができるようにある
+
+- 参考：[Let's Get Rusty - 5 deadly Rust anti-patterns to avoid](https://youtu.be/SWwTD2neodE?si=1OQG2Vc5jH0yLdnt)
 
 ### 関数の引数では、所有型の借用より、借用型を優先する (`&str` > `&String`, `&[T]` > `&Vec<T>`, `&T` > `&Box<T>`)
 
