@@ -301,6 +301,10 @@ pub struct NewtonSeconds(pub f64);
 
 - 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目１２
 
+## 並列実行
+
+### 状態共有並列実行は気を付ける
+
 ## unsafe
 
 ### unsafeコードは書かない
