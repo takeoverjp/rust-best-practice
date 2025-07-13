@@ -1,4 +1,4 @@
-a# Rust Best Practices
+# Rust Best Practices
 
 - [本リポジトリの目的](#本リポジトリの目的)
 - [参考文献](#参考文献)
@@ -253,9 +253,17 @@ pub struct NewtonSeconds(pub f64);
 - `anyhow`クレートは、エラーをトレイトオブジェクトとして扱うため、依存するすべてのライブラリのエラーを単純に一貫して扱うことができる
 - `thiserror`クレートは、元になるエラーが複数あり、それらの型を保持する必要があるときに使う
 
-- 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目４
+- 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目18
 
 ## 実装
+
+### Don't panic
+
+- panic時の挙動はプロジェクト全体の設定次第
+- 例外安全性が必要になる
+- ffi境界で未定義動作になる
+
+- 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目４
 
 ### 明示的なループの代わりにイテレータ変換を使う
 
