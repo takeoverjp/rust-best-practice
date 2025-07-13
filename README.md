@@ -265,7 +265,7 @@ pub struct NewtonSeconds(pub f64);
   - ffi境界で未定義動作になる
 
 - 検出方法
-  - no_panic crate
+  - [no_panic crate](no-panic - crates.io: Rust Package Registry https://share.google/KvZUZhcBR6otApxKr)
 
 - 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目４
 
