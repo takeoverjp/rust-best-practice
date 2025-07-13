@@ -259,9 +259,13 @@ pub struct NewtonSeconds(pub f64);
 
 ### Don't panic
 
-- panic時の挙動はプロジェクト全体の設定次第
-- 例外安全性が必要になる
-- ffi境界で未定義動作になる
+- 理由
+  - panic時の挙動はプロジェクト全体の設定次第
+  - 例外安全性が必要になる
+  - ffi境界で未定義動作になる
+
+- 検出方法
+  - no_panic crate
 
 - 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目４
 
