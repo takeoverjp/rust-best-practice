@@ -4,6 +4,7 @@
 - [参考文献](#参考文献)
 - [API設計](#api設計)
   - [APIを定義する場合は、Rust API Guidelinesに従う](#apiを定義する場合はrust-api-guidelinesに従う)
+  - [公開範囲を最小化する](#公開範囲を最小化する)
   - [値の所有権が必要な場合、参照を受け取って内部で`clone`するのではなく、所有権をとる](#値の所有権が必要な場合参照を受け取って内部でcloneするのではなく所有権をとる)
   - [関数の引数では、所有型の借用より、借用型を優先する (`&str` \> `&String`, `&[T]` \> `&Vec<T>`, `&T` \> `&Box<T>`)](#関数の引数では所有型の借用より借用型を優先する-str--string-t--vect-t--boxt)
   - [複雑な型にはビルダパターンを使う](#複雑な型にはビルダパターンを使う)
@@ -70,6 +71,14 @@
 - 実際の設計時には、各APIに対して[チェックリスト](https://rust-lang.github.io/api-guidelines/checklist.html)でチェックする
 
 - 参考：[Rust for Rustaceans](https://rust-for-rustaceans.com/)のChapter 3 "Designing Interfaces"
+- 参考：[Rust API Guidelines - Structs have private fields (C-STRUCT-PRIVATE)](https://rust-lang.github.io/api-guidelines/future-proofing.html#structs-have-private-fields-c-struct-private)
+
+### 公開範囲を最小化する
+
+- `pub(crate)`, `pub(super)`, `pub(in <path>)`, `pub(self)`などを適切に活用し、クレート外部に公開するシンボルを最低限にする
+- そうすることで、APIの破壊的変更やメンテナンスコストを最小限に抑えることができる
+
+- 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目２２
 
 ### 値の所有権が必要な場合、参照を受け取って内部で`clone`するのではなく、所有権をとる
 
