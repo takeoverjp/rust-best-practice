@@ -37,9 +37,11 @@
   - [unsafeコードが依存する前提条件と普遍条件を明記する](#unsafeコードが依存する前提条件と普遍条件を明記する)
   - [unsafeコードに対してMiriを実行する](#unsafeコードに対してmiriを実行する)
   - [unsafeコードに対してマルチスレッドで使用される場合を慎重に考える](#unsafeコードに対してマルチスレッドで使用される場合を慎重に考える)
-- [CI](#ci)
+- [依存ライブラリ](#依存ライブラリ)
+  - [ワイルドカードインポートはしない](#ワイルドカードインポートはしない)
   - [`cargo udeps`で不必要な依存クレートをチェックする](#cargo-udepsで不必要な依存クレートをチェックする)
   - [`cargo deny`で依存クレートをチェックする](#cargo-denyで依存クレートをチェックする)
+  - [`cargo install`するときは、`--locked`オプションをつける](#cargo-installするときは--lockedオプションをつける)
 
 
 ## 本リポジトリの目的
@@ -346,13 +348,19 @@ pub struct NewtonSeconds(pub f64);
 
 ### unsafeコードに対してマルチスレッドで使用される場合を慎重に考える
 
-## CI
+## 依存ライブラリ
+
+### ワイルドカードインポートはしない
+
+- ワイルドカードインポートは、依存クレートの更新に伴い、シンボルの衝突などにつながるリスクがあるため、避けるべき
+
+- 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目２３
 
 ### `cargo udeps`で不必要な依存クレートをチェックする
 
 - `cargo udeps`により、リファクタリング等で不要となった依存に気づくことができる
 
-- 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目４
+- 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目２５
 
 ### `cargo deny`で依存クレートをチェックする
 
@@ -362,4 +370,11 @@ pub struct NewtonSeconds(pub f64);
   - ただ受け入れられない依存ライブラリ
   - 依存グラフ中で、複数の異なるバージョンが使われている依存ライブラリ
 
-- 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目４
+- 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目２５
+
+### `cargo install`するときは、`--locked`オプションをつける
+
+- `cargo install`は、デフォルトで`Cargo.lock`を参照せずに毎回`Cargo.toml`で指定された範囲で最新のバージョンの依存ライブラリを使ってビルドするため、再現性がなくなってしまう
+- `--locked`オプションをつけることで、`Cargo.lock`に記載されているバージョンの依存ライブラリを使ってビルドすることができ、再現性を確保できる
+
+- 参考：[cargo-install(1) - Dealing with the Lockfile](https://doc.rust-lang.org/cargo/commands/cargo-install.html#dealing-with-the-lockfile)
