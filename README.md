@@ -28,6 +28,10 @@
   - [明示的なループの代わりにイテレータ変換を使う](#明示的なループの代わりにイテレータ変換を使う)
   - [状態遷移を表現するときは、Typestateパターンを使う](#状態遷移を表現するときはtypestateパターンを使う)
   - [ジェネリクスとトレイトオブジェクトを適切に使い分ける](#ジェネリクスとトレイトオブジェクトを適切に使い分ける)
+- [コメント](#コメント)
+  - [APIに対するドキュメンテーションコメントは、rust-lang/rfcs#1574に従う](#apiに対するドキュメンテーションコメントはrust-langrfcs1574に従う)
+  - [ドキュメンテーションコメントに記載するサンプルコードにおいて、利用者の理解の助けにならない部分は、`/// #`を使う](#ドキュメンテーションコメントに記載するサンプルコードにおいて利用者の理解の助けにならない部分は-を使う)
+  - [ドキュメンテーションコメントに記載するサンプルコードにおいて、実行可能なテストになっていない場合は`/// ```no_run`を使う](#ドキュメンテーションコメントに記載するサンプルコードにおいて実行可能なテストになっていない場合は-no_runを使う)
 - [並列実行](#並列実行)
   - [メモリを共有して通信するのではなく、通信してメモリを共有する](#メモリを共有して通信するのではなく通信してメモリを共有する)
   - [状態共有並列実行は気を付ける](#状態共有並列実行は気を付ける)
@@ -174,7 +178,7 @@ let me = builder.build();
   - トレイトに依存した処理を書く開発者
 - 前者に向けてはトレイトメソッドを少なく、後者に向けてはトレイトメソッドを充実させることが望ましい
 - 実装必須のトレイトメソッドを極少数、それらに依存するデフォルト実装つきのトレイトメソッドを充実させることで、両方の要件を満たすことができる
-
+こ
 - 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目１3
 
 ### SemVerを理解する
@@ -339,6 +343,20 @@ pub struct NewtonSeconds(pub f64);
   - コンパイル時に単相化対象の型がわからない場合は使用できない（`dlopen(3)`など）
 
 - 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目１２
+
+## コメント
+
+### APIに対するドキュメンテーションコメントは、[rust-lang/rfcs#1574](https://github.com/rust-lang/rfcs/blob/master/text/1574-more-api-documentation-conventions.md)に従う
+
+- 参考：[rust-lang/rfcs#1574](https://github.com/rust-lang/rfcs/blob/master/text/1574-more-api-documentation-conventions.md)
+
+### ドキュメンテーションコメントに記載するサンプルコードにおいて、利用者の理解の助けにならない部分は、`/// #`を使う
+
+- 参考：[The rustdoc book - Hiding portions of the example](https://doc.rust-lang.org/rustdoc/write-documentation/documentation-tests.html#hiding-portions-of-the-example)
+
+### ドキュメンテーションコメントに記載するサンプルコードにおいて、実行可能なテストになっていない場合は`/// ```no_run`を使う
+
+- 参考：[The rustdoc book - Documentation tests](https://doc.rust-lang.org/rustdoc/write-documentation/documentation-tests.html#attributes)
 
 ## 並列実行
 
