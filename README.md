@@ -364,6 +364,8 @@ pub struct NewtonSeconds(pub f64);
 
 ### 状態共有並列実行は気を付ける
 
+- Rustはデータ競合を防いでくれるが、デッドロックを防ぐのはプログラマの責務
+
 ## unsafe
 
 ### unsafeコードは書かない
