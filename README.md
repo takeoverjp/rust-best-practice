@@ -414,3 +414,7 @@ pub struct NewtonSeconds(pub f64);
 - `--locked`オプションをつけることで、`Cargo.lock`に記載されているバージョンの依存ライブラリを使ってビルドすることができ、再現性を確保できる
 
 - 参考：[cargo-install(1) - Dealing with the Lockfile](https://doc.rust-lang.org/cargo/commands/cargo-install.html#dealing-with-the-lockfile)
+
+### 後方互換性を満たすための必要条件を理解し、適切にセマンティックバージョンを管理する
+
+- 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目21
