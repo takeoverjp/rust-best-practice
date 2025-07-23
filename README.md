@@ -418,3 +418,11 @@ pub struct NewtonSeconds(pub f64);
 ### 後方互換性を満たすための必要条件を理解し、適切にセマンティックバージョンを管理する
 
 - 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目21
+
+## テスト
+
+### private関数のテストはソースコードに記載する
+
+### public関数のテストはtestsディレクトリに集約する
+
+### cargo mutantsの導入を検討する
