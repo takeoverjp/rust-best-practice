@@ -24,6 +24,7 @@
   - [ライブラリでは、`thiserror`クレートを使って具体的で詳細なエラー情報を呼び出し側に伝える](#ライブラリではthiserrorクレートを使って具体的で詳細なエラー情報を呼び出し側に伝える)
   - [アプリケーションでは、`anyhow`クレートを使ってすべての依存ライブラリのエラーを一貫した方法で処理する](#アプリケーションではanyhowクレートを使ってすべての依存ライブラリのエラーを一貫した方法で処理する)
 - [実装](#実装)
+  - [有用なlintはデフォルトで有効にする](#有用なlintはデフォルトで有効にする)
   - [Don't panic](#dont-panic)
   - [明示的なループの代わりにイテレータ変換を使う](#明示的なループの代わりにイテレータ変換を使う)
   - [状態遷移を表現するときは、Typestateパターンを使う](#状態遷移を表現するときはtypestateパターンを使う)
@@ -287,6 +288,16 @@ pub struct NewtonSeconds(pub f64);
 - 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目18
 
 ## 実装
+
+### 有用なlintはデフォルトで有効にする
+
+```
+#![deny(missing_debug_implementations)]
+#![deny(missing_docs)]
+#![deny(rustdoc::missing_crate_level_docs)]
+```
+
+- 参考：[Crust of Rust: Lifetime Annotations](https://youtu.be/rAl-9HwD858?list=PLqbS7AVVErFiWDOAVrPt7aYmnuuOLYvOa&t=343)
 
 ### Don't panic
 
