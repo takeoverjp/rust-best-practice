@@ -296,14 +296,20 @@ pub struct NewtonSeconds(pub f64);
 
 ### 有用なlintはデフォルトで有効にする
 
+- [`#![deny(missing_debug_implementations)]`](https://doc.rust-lang.org/stable/nightly-rustc/rustc_lint/builtin/static.MISSING_DEBUG_IMPLEMENTATIONS.html)
+  - 説明：`Debug`トレイトを実装していない型がある場合にコンパイルエラーにする
+  - 理由：`Debug`トレイトを実装していない方はデバッグ効率が悪いため
+  - 背反：コンパイル時間とコードサイズが増えること、`Debug`トレイトを実装するboilerplateコードが増えること
+
 ```
-#![deny(missing_debug_implementations)]
 #![deny(missing_docs)]
 #![deny(rustdoc::missing_crate_level_docs)]
 ```
 
-- `#![deny(unsafe_op_in_unsafe_fn)]`
-  - `unsafe`関数の中で、`unsafe`ブロックを使わずに`unsafe`コードを実行することを禁止する
+- [`#![deny(unsafe_op_in_unsafe_fn)]`](https://doc.rust-lang.org/stable/nightly-rustc/rustc_lint/builtin/static.UNSAFE_OP_IN_UNSAFE_FN.html)
+  - 説明：`unsafe`関数の中で、`unsafe`ブロックを使わずに`unsafe`コードを実行することを禁止する
+  - 理由：`unsafe`関数の中であっても、`unsafe`ブロックを使うことで、どこが`unsafe`コードなのかを明示的にすることができ、レビュー効率が向上するため
+  - 背反：特になし。互換性のために現時点では`warn`だが、将来的にはデフォルトで`deny`になる可能性も十分ある。
 
 - 参考：[Crust of Rust: Lifetime Annotations](https://youtu.be/rAl-9HwD858?list=PLqbS7AVVErFiWDOAVrPt7aYmnuuOLYvOa&t=343)
 - 参考：[Conprehensive Rust - Unsafe関数の呼び出し](https://google.github.io/comprehensive-rust/ja/unsafe-rust/unsafe-functions.html)
