@@ -48,6 +48,11 @@
   - [`cargo udeps`で不必要な依存クレートをチェックする](#cargo-udepsで不必要な依存クレートをチェックする)
   - [`cargo deny`で依存クレートをチェックする](#cargo-denyで依存クレートをチェックする)
   - [`cargo install`するときは、`--locked`オプションをつける](#cargo-installするときは--lockedオプションをつける)
+  - [後方互換性を満たすための必要条件を理解し、適切にセマンティックバージョンを管理する](#後方互換性を満たすための必要条件を理解し適切にセマンティックバージョンを管理する)
+- [テスト](#テスト)
+  - [private関数のテストはソースコードに記載する](#private関数のテストはソースコードに記載する)
+  - [public関数のテストはtestsディレクトリに集約する](#public関数のテストはtestsディレクトリに集約する)
+  - [cargo mutantsの導入を検討する](#cargo-mutantsの導入を検討する)
 
 
 ## 本リポジトリの目的
@@ -297,7 +302,11 @@ pub struct NewtonSeconds(pub f64);
 #![deny(rustdoc::missing_crate_level_docs)]
 ```
 
+- `#![deny(unsafe_op_in_unsafe_fn)]`
+  - `unsafe`関数の中で、`unsafe`ブロックを使わずに`unsafe`コードを実行することを禁止する
+
 - 参考：[Crust of Rust: Lifetime Annotations](https://youtu.be/rAl-9HwD858?list=PLqbS7AVVErFiWDOAVrPt7aYmnuuOLYvOa&t=343)
+- 参考：[Conprehensive Rust - Unsafe関数の呼び出し](https://google.github.io/comprehensive-rust/ja/unsafe-rust/unsafe-functions.html)
 
 ### Don't panic
 
