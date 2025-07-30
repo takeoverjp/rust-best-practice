@@ -304,6 +304,7 @@ pub struct NewtonSeconds(pub f64);
 
 ```
 #![deny(missing_docs)]
+#![deny(broken_intra_doc_links)]
 #![deny(rustdoc::missing_crate_level_docs)]
 ```
 
@@ -314,6 +315,7 @@ pub struct NewtonSeconds(pub f64);
 
 - 参考：[Crust of Rust: Lifetime Annotations](https://youtu.be/rAl-9HwD858?list=PLqbS7AVVErFiWDOAVrPt7aYmnuuOLYvOa&t=343)
 - 参考：[Conprehensive Rust - Unsafe関数の呼び出し](https://google.github.io/comprehensive-rust/ja/unsafe-rust/unsafe-functions.html)
+- 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目27
 
 ### Don't panic
 
