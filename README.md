@@ -48,6 +48,7 @@
   - [`cargo udeps`で不必要な依存クレートをチェックする](#cargo-udepsで不必要な依存クレートをチェックする)
   - [`cargo deny`で依存クレートをチェックする](#cargo-denyで依存クレートをチェックする)
   - [`cargo install`するときは、`--locked`オプションをつける](#cargo-installするときは--lockedオプションをつける)
+  - [`cargo build`するときに、依存クレートを更新する必要のないときは、`--locked`オプションをつける](#cargo-buildするときに依存クレートを更新する必要のないときは--lockedオプションをつける)
   - [後方互換性を満たすための必要条件を理解し、適切にセマンティックバージョンを管理する](#後方互換性を満たすための必要条件を理解し適切にセマンティックバージョンを管理する)
 - [テスト](#テスト)
   - [private関数のテストはソースコードに記載する](#private関数のテストはソースコードに記載する)
@@ -443,6 +444,14 @@ pub struct NewtonSeconds(pub f64);
 - `--locked`オプションをつけることで、`Cargo.lock`に記載されているバージョンの依存ライブラリを使ってビルドすることができ、再現性を確保できる
 
 - 参考：[cargo-install(1) - Dealing with the Lockfile](https://doc.rust-lang.org/cargo/commands/cargo-install.html#dealing-with-the-lockfile)
+
+### `cargo build`するときに、依存クレートを更新する必要のないときは、`--locked`オプションをつける
+
+- `cargo build`は、デフォルトで`Cargo.lock`を参照せずに毎回`Cargo.toml`で指定された範囲で最新のバージョンの依存ライブラリを使ってビルドするため、再現性がなくなってしまう
+- `--locked`オプションをつけることで、`Cargo.lock`に記載されているバージョンの依存ライブラリを使ってビルドすることができ、再現性を確保できる
+- 逆に、依存クレートの更新だけをするときには、`cargo update`を使う
+
+- 参考：[cargo-build(1) - Manifest Options](https://doc.rust-lang.org/cargo/commands/cargo-build.html#manifest-options)
 
 ### 後方互換性を満たすための必要条件を理解し、適切にセマンティックバージョンを管理する
 
