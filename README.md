@@ -200,6 +200,8 @@ let me = builder.build();
 
 - 参考：参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目２１
 
+### `cargo-semver-check`を使って、バージョン更新のアセスメントを行う
+
 ## 標準ライブラリ内のトレイト
 
 ### 機密情報が含まれない型であれば、`Debug`トレイトを実装する
