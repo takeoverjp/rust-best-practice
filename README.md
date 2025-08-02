@@ -390,6 +390,12 @@ pub struct NewtonSeconds(pub f64);
 
 - 参考：[The rustdoc book - Documentation tests](https://doc.rust-lang.org/rustdoc/write-documentation/documentation-tests.html#attributes)
 
+## マクロ
+
+### 整合した状態が必要で、それを実現する方法がマクロしかないときに、マクロを使う
+
+- 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目28
+
 ## 並列実行
 
 ### メモリを共有して通信するのではなく、通信してメモリを共有する
