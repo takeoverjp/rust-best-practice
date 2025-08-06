@@ -214,6 +214,10 @@ let me = builder.build();
 
 - 参考：[Rust API Guidelines - C-CASE](https://rust-lang.github.io/api-guidelines/naming.html#casing-conforms-to-rfc-430-c-case)
 
+### クレート名に`-rs`, `-rust`をつけない
+
+- 参考：[Rust API Guidelines - C-CASE](https://rust-lang.github.io/api-guidelines/naming.html#casing-conforms-to-rfc-430-c-case)
+
 ## 標準ライブラリ内のトレイト
 
 ### 機密情報が含まれない型であれば、`Debug`トレイトを実装する
