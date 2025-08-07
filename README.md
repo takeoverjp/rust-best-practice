@@ -396,6 +396,8 @@ pub struct NewtonSeconds(pub f64);
 
 ### `tracing`クレートと`tracing-subscriber`クレートを使うことで、ログ実装とログ出力を分離する
 
+- 参考：[console_subscriber](https://docs.rs/console-subscriber/latest/console_subscriber/#adding-the-console-subscriber)
+
 ## コメント
 
 ### APIに対するドキュメンテーションコメントは、[rust-lang/rfcs#1574](https://github.com/rust-lang/rfcs/blob/master/text/1574-more-api-documentation-conventions.md)に従う
