@@ -392,6 +392,10 @@ pub struct NewtonSeconds(pub f64);
 
 - 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目１２
 
+### 暗黙的な整数のラッピングをつかわない
+
+- 参考: [Avoid Implicit Integer Wrapping](https://coding-guidelines.arewesafetycriticalyet.org/coding-guidelines/types-and-traits.html)
+
 ## ログ
 
 ### `tracing`クレートと`tracing-subscriber`クレートを使うことで、ログ実装とログ出力を分離する
