@@ -13,6 +13,7 @@
   - [SemVerを理解する](#semverを理解する)
   - [`cargo-semver-check`を使って、バージョン更新のアセスメントを行う](#cargo-semver-checkを使ってバージョン更新のアセスメントを行う)
   - [略語は１語として扱う](#略語は１語として扱う)
+  - [クレート名に`-rs`, `-rust`をつけない](#クレート名に-rs--rustをつけない)
 - [標準ライブラリ内のトレイト](#標準ライブラリ内のトレイト)
   - [機密情報が含まれない型であれば、`Debug`トレイトを実装する](#機密情報が含まれない型であればdebugトレイトを実装する)
   - [解放しなければならない何らかの資源を保持する型には`Drop`トレイトを実装し、RAIIにする](#解放しなければならない何らかの資源を保持する型にはdropトレイトを実装しraiiにする)
@@ -31,6 +32,7 @@
   - [明示的なループの代わりにイテレータ変換を使う](#明示的なループの代わりにイテレータ変換を使う)
   - [状態遷移を表現するときは、Typestateパターンを使う](#状態遷移を表現するときはtypestateパターンを使う)
   - [ジェネリクスとトレイトオブジェクトを適切に使い分ける](#ジェネリクスとトレイトオブジェクトを適切に使い分ける)
+  - [暗黙的な整数のラッピングをつかわない](#暗黙的な整数のラッピングをつかわない)
 - [ログ](#ログ)
   - [`tracing`クレートと`tracing-subscriber`クレートを使うことで、ログ実装とログ出力を分離する](#tracingクレートとtracing-subscriberクレートを使うことでログ実装とログ出力を分離する)
 - [コメント](#コメント)
@@ -49,6 +51,7 @@
   - [unsafeコードが依存する前提条件と普遍条件を明記する](#unsafeコードが依存する前提条件と普遍条件を明記する)
   - [unsafeコードに対してMiriを実行する](#unsafeコードに対してmiriを実行する)
   - [unsafeコードに対してマルチスレッドで使用される場合を慎重に考える](#unsafeコードに対してマルチスレッドで使用される場合を慎重に考える)
+  - [intをポインタに変換しない](#intをポインタに変換しない)
 - [依存ライブラリ](#依存ライブラリ)
   - [ワイルドカードインポートはしない](#ワイルドカードインポートはしない)
   - [`cargo udeps`で不必要な依存クレートをチェックする](#cargo-udepsで不必要な依存クレートをチェックする)
@@ -83,6 +86,7 @@
 - [Rust Design Patterns](https://rust-unofficial.github.io/patterns/)
 - [Clippy Lints](https://rust-lang.github.io/rust-clippy/master/)
 - [Rust Cook Book](https://rust-lang-nursery.github.io/rust-cookbook/)
+- [Safety-Critical Rust Coding Guidelines](https://coding-guidelines.arewesafetycriticalyet.org/)
 
 ## API設計
 
@@ -447,6 +451,10 @@ pub struct NewtonSeconds(pub f64);
 ### unsafeコードに対してMiriを実行する
 
 ### unsafeコードに対してマルチスレッドで使用される場合を慎重に考える
+
+### intをポインタに変換しない
+
+- 参考：[An integer shall not be converted to a pointer](https://coding-guidelines.arewesafetycriticalyet.org/coding-guidelines/expressions.html#gui_PM8Vpf7lZ51U)
 
 ## 依存ライブラリ
 
