@@ -400,6 +400,10 @@ pub struct NewtonSeconds(pub f64);
 
 - 参考: [Avoid Implicit Integer Wrapping](https://coding-guidelines.arewesafetycriticalyet.org/coding-guidelines/types-and-traits.html)
 
+### 生ポインタへのキャストで、型推論を使わない
+
+- 参考：[Avoid as underscore pointer casts](https://coding-guidelines.arewesafetycriticalyet.org/coding-guidelines/expressions.html#gui_HDnAZ7EZ4z6G)
+
 ## ログ
 
 ### `tracing`クレートと`tracing-subscriber`クレートを使うことで、ログ実装とログ出力を分離する
