@@ -522,3 +522,12 @@ struct CompileFailTest;
 ```
 
 - 参考：[Crust of Rust - Declarative Macros](https://youtu.be/q6paRBbLgNw?list=PLqbS7AVVErFiWDOAVrPt7aYmnuuOLYvOa&t=3394)
+
+
+## async
+
+### ログにはtracing
+
+### backtrace
+
+- 参考: [debug tool](https://gihyo.jp/article/2023/02/tfen007-rust-debug-tool)
