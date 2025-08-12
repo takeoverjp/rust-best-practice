@@ -404,6 +404,10 @@ pub struct NewtonSeconds(pub f64);
 
 - 参考：[Avoid as underscore pointer casts](https://coding-guidelines.arewesafetycriticalyet.org/coding-guidelines/expressions.html#gui_HDnAZ7EZ4z6G)
 
+### 文字列を結合するときはformat!を使う
+
+- 参考：[Concatenating strings with format!](https://rust-unofficial.github.io/patterns/idioms/concat-format.html)
+
 ## ログ
 
 ### `tracing`クレートと`tracing-subscriber`クレートを使うことで、ログ実装とログ出力を分離する
