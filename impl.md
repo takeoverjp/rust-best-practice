@@ -98,4 +98,3 @@
 ## 文字列を結合するときはformat!を使う
 
 - 参考：[Concatenating strings with format!](https://rust-unofficial.github.io/patterns/idioms/concat-format.html)
-

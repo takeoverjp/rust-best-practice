@@ -7,14 +7,15 @@
 - [型](#型)
 - [エラーハンドリング](#エラーハンドリング)
 - [実装](#実装)
+- [モジュール](#モジュール)
 - [ログ](#ログ)
-- [コメント](#コメント)
-- [マクロ](#マクロ)
-- [並列実行](#並列実行)
-- [async](#async)
-- [unsafe](#unsafe)
 - [依存ライブラリ](#依存ライブラリ)
 - [テスト](#テスト)
+- [コメント](#コメント)
+- [並列実行](#並列実行)
+- [async](#async)
+- [マクロ](#マクロ)
+- [unsafe](#unsafe)
 
 
 ## 本リポジトリの目的
@@ -40,28 +41,16 @@
 - [Safety-Critical Rust Coding Guidelines](https://coding-guidelines.arewesafetycriticalyet.org/)
 
 ## [API設計](api_design.md)
-
 ## [標準ライブラリ内のトレイト](standard_trait.md)
-
 ## [型](type.md)
-
 ## [エラーハンドリング](error_handling.md)
-
 ## [実装](impl.md)
-
+## [モジュール](module.md)
 ## [ログ](log.md)
-
-## [コメント](comment.md)
-
-## [マクロ](macro.md)
-
-## [並列実行](parallelism.md)
-
-## [async](async.md)
-
-## [unsafe](unsafe.md)
-
 ## [依存ライブラリ](dependency.md)
-
 ## [テスト](test.md)
-
+## [コメント](comment.md)
+## [並列実行](parallelism.md)
+## [async](async.md)
+## [マクロ](macro.md)
+## [unsafe](unsafe.md)
