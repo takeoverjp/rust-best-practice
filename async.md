@@ -40,3 +40,5 @@ async fn await_and_lock() {
     }
 }
 ```
+
+- 参考: [await_holding_lock - clippy](https://rust-lang.github.io/rust-clippy/master/index.html#await_holding_lock)
