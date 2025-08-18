@@ -30,3 +30,5 @@
 - `thiserror`クレートは、元になるエラーが複数あり、それらの型を保持する必要があるときに使う
 
 - 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目18
+
+## panic発生時のログ出力には、std::panic::set_hookを使う
