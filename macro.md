@@ -10,3 +10,7 @@
 ## proc macroを作るときには、`proc-macro2`, `syn`, `quote`, `darling`を使う
 
 - 参考:https://qiita.com/advent-calendar/2024/rust-macro
+
+## macroに記述するパスはフルパスにする
+
+- 参考:https://qiita.com/namn1125/items/61587afa264107ba7567#fn-nocontext
