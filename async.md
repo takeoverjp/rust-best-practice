@@ -2,7 +2,11 @@
 
 - [ログにはtracing](#ログにはtracing)
 - [backtrace](#backtrace)
+- [taskには名前をつける](#taskには名前をつける)
+- [tokio-consoleが簡単に使えるようにする](#tokio-consoleが簡単に使えるようにする)
+- [ライブラリはtokioに依存しないようにする](#ライブラリはtokioに依存しないようにする)
 - [lockを取りながらawaitするFutureは返さない](#lockを取りながらawaitするfutureは返さない)
+- [Pinで受け取った構造体の中のフィールドをPinで参照したい場合は、`pin_project!`を使う](#pinで受け取った構造体の中のフィールドをpinで参照したい場合はpin_projectを使う)
 
 ## ログにはtracing
 
@@ -52,3 +56,8 @@ async fn await_and_lock() {
 ```
 
 - 参考: [await_holding_lock - clippy](https://rust-lang.github.io/rust-clippy/master/index.html#await_holding_lock)
+
+## Pinで受け取った構造体の中のフィールドをPinで参照したい場合は、`pin_project!`を使う
+
+- 参考：[Projections and Structural Pinning](https://doc.rust-lang.org/std/pin/index.html#projections-and-structural-pinning)
+- 参考：[pin_project_lite](https://docs.rs/pin-project-lite/latest/pin_project_lite/);
