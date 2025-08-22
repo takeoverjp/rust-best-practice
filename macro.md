@@ -14,3 +14,8 @@
 ## macroに記述するパスはフルパスにする
 
 - 参考:https://qiita.com/namn1125/items/61587afa264107ba7567#fn-nocontext
+
+## AST explorer で、ASTを確認する
+
+- 参考: [AST explorer](https://share.google/7Cy5l3AHX1S4sqdVu)
+- 参考: https://zenn.dev/tak_iwamoto/articles/890771ea5b8ad3
