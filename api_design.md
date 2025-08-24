@@ -144,3 +144,4 @@ let me = builder.build();
 
 - 参考：[Rust API Guidelines - C-CASE](https://rust-lang.github.io/api-guidelines/naming.html#casing-conforms-to-rfc-430-c-case)
 
+## ビルダーパターンのAPIを提供するときは、validateを追加する可能性をふまえて、`Result`型を返す
