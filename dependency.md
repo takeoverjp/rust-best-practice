@@ -6,6 +6,7 @@
 - [`cargo install`するときは、`--locked`オプションをつける](#cargo-installするときは--lockedオプションをつける)
 - [`cargo build`するときに、依存クレートを更新する必要のないときは、`--locked`オプションをつける](#cargo-buildするときに依存クレートを更新する必要のないときは--lockedオプションをつける)
 - [後方互換性を満たすための必要条件を理解し、適切にセマンティックバージョンを管理する](#後方互換性を満たすための必要条件を理解し適切にセマンティックバージョンを管理する)
+- [普段の開発ではレジストリのpackageではなく、ローカルのpackageを参照する場合、`Cargo.toml`の`[patch]`セクションを使う](#普段の開発ではレジストリのpackageではなくローカルのpackageを参照する場合cargotomlのpatchセクションを使う)
 
 ## ワイルドカードインポートはしない
 
@@ -47,3 +48,16 @@
 ## 後方互換性を満たすための必要条件を理解し、適切にセマンティックバージョンを管理する
 
 - 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目21
+
+## 普段の開発ではレジストリのpackageではなく、ローカルのpackageを参照する場合、`Cargo.toml`の`[patch]`セクションを使う
+
+- 以下のように記載することで、普段の開発(patchが適用される)ではローカルのpackageを参照し、リリース時(patchが適用されない)にはレジストリのpackageを参照するようにできる
+
+```toml
+[patch.crates-io]
+your-library-package = { path = "../your-library-package" }
+```
+
+- `patch`というキーの後ろには、`crates-io`のようなレジストリの名前や、URLを指定することができる
+
+- 参考：[The [patch] section](https://doc.rust-lang.org/cargo/reference/overriding-dependencies.html#the-patch-section)
