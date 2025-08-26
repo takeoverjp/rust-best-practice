@@ -8,6 +8,7 @@
 - [暗黙的な整数のラッピングをつかわない](#暗黙的な整数のラッピングをつかわない)
 - [生ポインタへのキャストで、型推論を使わない](#生ポインタへのキャストで型推論を使わない)
 - [文字列を結合するときはformat!を使う](#文字列を結合するときはformatを使う)
+- [newtypeパターンで定義した型に`Deref`トレイト・`DerefMut`トレイトを実装するかは慎重に判断する](#newtypeパターンで定義した型にderefトレイトderefmutトレイトを実装するかは慎重に判断する)
 
 ## 有用なlintはデフォルトで有効にする
 
@@ -98,3 +99,16 @@
 ## 文字列を結合するときはformat!を使う
 
 - 参考：[Concatenating strings with format!](https://rust-unofficial.github.io/patterns/idioms/concat-format.html)
+
+## newtypeパターンで定義した型に`Deref`トレイト・`DerefMut`トレイトを実装するかは慎重に判断する
+
+- 参考：https://stackoverflow.com/questions/45086595/is-it-considered-a-bad-practice-to-implement-deref-for-newtypes
+
+- 反対派
+  - Derefはスマートポインタ用に設計されている。
+  - newtypeに適用すると、has-a関係をis-a関係にすることになる。中の型のAPIを不必要に公開してしまい、継承と同じ強い依存が発生する。
+  - 必要なAPIのみ、明示的に処理の委譲を書くべき
+  - 言語仕様で処理の委譲をサポートしてくれることが望ましいが、それまではdelegateクレートなどでサボることができる
+- 賛成派
+  - 多くのnewtypeは、その型が満たすべきある不変性を静的に確認するために使われる。オブジェクト構築後はnewtype自体に意味はなく、中身をそのまま露出したいので、都度 .0を書くのは冗長。
+    - （この意見に対する反対意見）DerefMutしたら、不変性も壊される
