@@ -3,6 +3,8 @@
 - [`Option`と`Result`は`match`を用いずに変換する](#optionとresultはmatchを用いずに変換する)
 - [ライブラリでは、`thiserror`クレートを使って具体的で詳細なエラー情報を呼び出し側に伝える](#ライブラリではthiserrorクレートを使って具体的で詳細なエラー情報を呼び出し側に伝える)
 - [アプリケーションでは、`anyhow`クレートを使ってすべての依存ライブラリのエラーを一貫した方法で処理する](#アプリケーションではanyhowクレートを使ってすべての依存ライブラリのエラーを一貫した方法で処理する)
+- [panic発生時のログ出力には、std::panic::set\_hookを使う](#panic発生時のログ出力にはstdpanicset_hookを使う)
+- [`expect`には、なぜ`Result`が`Ok`であるべきだと期待したのかを記載する](#expectにはなぜresultがokであるべきだと期待したのかを記載する)
 
 ## `Option`と`Result`は`match`を用いずに変換する
 
@@ -32,3 +34,7 @@
 - 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目18
 
 ## panic発生時のログ出力には、std::panic::set_hookを使う
+
+## `expect`には、なぜ`Result`が`Ok`であるべきだと期待したのかを記載する
+
+- 参考：[Recommended Message Style](https://doc.rust-lang.org/std/result/enum.Result.html#recommended-message-style)
