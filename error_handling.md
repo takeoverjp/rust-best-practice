@@ -5,6 +5,7 @@
 - [アプリケーションでは、`anyhow`クレートを使ってすべての依存ライブラリのエラーを一貫した方法で処理する](#アプリケーションではanyhowクレートを使ってすべての依存ライブラリのエラーを一貫した方法で処理する)
 - [panic発生時のログ出力には、std::panic::set\_hookを使う](#panic発生時のログ出力にはstdpanicset_hookを使う)
 - [`expect`には、なぜ`Result`が`Ok`であるべきだと期待したのかを記載する](#expectにはなぜresultがokであるべきだと期待したのかを記載する)
+- [error codeを定義するときに、APIが返す可能性があるグループごとにerror型をわける](#error-codeを定義するときにapiが返す可能性があるグループごとにerror型をわける)
 
 ## `Option`と`Result`は`match`を用いずに変換する
 
@@ -38,3 +39,7 @@
 ## `expect`には、なぜ`Result`が`Ok`であるべきだと期待したのかを記載する
 
 - 参考：[Recommended Message Style](https://doc.rust-lang.org/std/result/enum.Result.html#recommended-message-style)
+
+## error codeを定義するときに、APIが返す可能性があるグループごとにerror型をわける
+
+- 参考：[`prost`](https://github.com/tokio-rs/prost)
