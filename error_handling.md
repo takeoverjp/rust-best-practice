@@ -6,6 +6,7 @@
 - [panic発生時のログ出力には、std::panic::set\_hookを使う](#panic発生時のログ出力にはstdpanicset_hookを使う)
 - [`expect`には、なぜ`Result`が`Ok`であるべきだと期待したのかを記載する](#expectにはなぜresultがokであるべきだと期待したのかを記載する)
 - [error codeを定義するときに、APIが返す可能性があるグループごとにerror型をわける](#error-codeを定義するときにapiが返す可能性があるグループごとにerror型をわける)
+- [バグがあるときにパニックする。バグのないときはパニックしない](#バグがあるときにパニックするバグのないときはパニックしない)
 
 ## `Option`と`Result`は`match`を用いずに変換する
 
@@ -43,3 +44,7 @@
 ## error codeを定義するときに、APIが返す可能性があるグループごとにerror型をわける
 
 - 参考：[`prost`](https://github.com/tokio-rs/prost)
+
+## バグがあるときにパニックする。バグのないときはパニックしない
+
+- 参考：[Using unwrap() in Rust is Okay - Andrew Gallant's Blog](https://burntsushi.net/unwrap/)
