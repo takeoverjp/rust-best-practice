@@ -25,3 +25,7 @@
 ## feature flagsを用意する場合は、クレートのトップレベルのドキュメントに`# Feature flags`セクションを設ける
 
 - 参考：[tokio - Feature flags](https://github.com/tokio-rs/tokio/blob/925c614c89d0a26777a334612e2ed6ad0e7935c3/tokio/src/lib.rs#L305-L342)
+
+## 複雑な初期化が必要で、`no_run`を指定するドキュメントコードは、呼ばれない関数を定義する形でかく
+
+- 参考:https://rust-unofficial.github.io/patterns/idioms/rustdoc-init.html
