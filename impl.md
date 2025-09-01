@@ -10,6 +10,7 @@
 - [文字列を結合するときはformat!を使う](#文字列を結合するときはformatを使う)
 - [newtypeパターンで定義した型に`Deref`トレイト・`DerefMut`トレイトを実装するかは慎重に判断する](#newtypeパターンで定義した型にderefトレイトderefmutトレイトを実装するかは慎重に判断する)
 - [値は使わないが、RAIIで副作用を起こすために変数に束縛したい場合は、`_`ではなく`_xxx`に束縛する](#値は使わないがraiiで副作用を起こすために変数に束縛したい場合は_ではなく_xxxに束縛する)
+- [warningを撲滅するときは、`#![deny(warnings)]`ではなく、`-D warnings`を使う](#warningを撲滅するときはdenywarningsではなく-d-warningsを使う)
 
 ## 有用なlintはデフォルトで有効にする
 
@@ -117,3 +118,7 @@
 ## 値は使わないが、RAIIで副作用を起こすために変数に束縛したい場合は、`_`ではなく`_xxx`に束縛する
 
 - `_`は値を束縛しないので、`_`を定義したスコープが生存期間と扱われない
+
+## warningを撲滅するときは、`#![deny(warnings)]`ではなく、`-D warnings`を使う
+
+- 参考：https://rust-unofficial.github.io/patterns/anti_patterns/deny-warnings.html
