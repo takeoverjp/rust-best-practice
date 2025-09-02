@@ -11,6 +11,7 @@
 - [`cargo-semver-check`を使って、バージョン更新のアセスメントを行う](#cargo-semver-checkを使ってバージョン更新のアセスメントを行う)
 - [略語は１語として扱う](#略語は１語として扱う)
 - [クレート名に`-rs`, `-rust`をつけない](#クレート名に-rs--rustをつけない)
+- [ビルダーパターンのAPIを提供するときは、validateを追加する可能性をふまえて、`Result`型を返す](#ビルダーパターンのapiを提供するときはvalidateを追加する可能性をふまえてresult型を返す)
 
 ## APIを定義する場合は、[Rust API Guidelines](https://rust-lang.github.io/api-guidelines/)に従う
 
@@ -24,6 +25,8 @@
 
 - `pub(crate)`, `pub(super)`, `pub(in <path>)`, `pub(self)`などを適切に活用し、クレート外部に公開するシンボルを最低限にする
 - そうすることで、APIの破壊的変更やメンテナンスコストを最小限に抑えることができる
+
+- 検出方法：[`#![deny(clippy::redundant_pub_crate)]`](https://rust-lang.github.io/rust-clippy/stable/index.html#redundant_pub_crate)
 
 - 参考：[Effective Rust](https://www.oreilly.co.jp/books/9784814400942/)の項目２２
 
