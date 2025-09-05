@@ -7,6 +7,7 @@
 - [ライブラリはtokioに依存しないようにする](#ライブラリはtokioに依存しないようにする)
 - [lockを取りながらawaitするFutureは返さない](#lockを取りながらawaitするfutureは返さない)
 - [Pinで受け取った構造体の中のフィールドをPinで参照したい場合は、`pin_project!`を使う](#pinで受け取った構造体の中のフィールドをpinで参照したい場合はpin_projectを使う)
+- [`tokio::select!`のbranchに書く`<async expression>`は、cancel safeであることを確認する](#tokioselectのbranchに書くasync-expressionはcancel-safeであることを確認する)
 - [`tokio::select!`のbranchで`, if <precondition>`を使う場合、非同期処理自体は評価されることを理解しておく](#tokioselectのbranchで-if-preconditionを使う場合非同期処理自体は評価されることを理解しておく)
 
 ## ログにはtracing
@@ -62,6 +63,10 @@ async fn await_and_lock() {
 
 - 参考：[Projections and Structural Pinning](https://doc.rust-lang.org/std/pin/index.html#projections-and-structural-pinning)
 - 参考：[pin_project_lite](https://docs.rs/pin-project-lite/latest/pin_project_lite/);
+
+## `tokio::select!`のbranchに書く`<async expression>`は、cancel safeであることを確認する
+
+- 参考：https://docs.rs/tokio/1.47.1/tokio/macro.select.html#cancellation-safety
 
 ## `tokio::select!`のbranchで`, if <precondition>`を使う場合、非同期処理自体は評価されることを理解しておく
 
