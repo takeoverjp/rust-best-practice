@@ -41,6 +41,10 @@
 - [Rust Cook Book](https://rust-lang-nursery.github.io/rust-cookbook/)
 - [Safety-Critical Rust Coding Guidelines](https://coding-guidelines.arewesafetycriticalyet.org/)
 
+- 要チェックセッション
+  - RustConf 2025
+    - [Cancelling Async Rust](https://rustconf.com/schedule-tag/rust-internals/)
+
 ## [API設計](api_design.md)
 ## [標準ライブラリ内のトレイト](standard_trait.md)
 ## [型](type.md)
