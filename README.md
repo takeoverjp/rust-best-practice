@@ -44,6 +44,7 @@
 - 要チェックセッション
   - RustConf 2025
     - [Cancelling Async Rust](https://rustconf.com/schedule-tag/rust-internals/)
+    - [Fine-Grained C++ Interop](https://rustconf.com/schedule-tag/interop/)
 
 ## [API設計](api_design.md)
 ## [標準ライブラリ内のトレイト](standard_trait.md)
