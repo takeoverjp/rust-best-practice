@@ -17,6 +17,7 @@
 - [マクロ](#マクロ)
 - [unsafe](#unsafe)
 - [低レイヤー](#低レイヤー)
+- [Rustバージョン](#rustバージョン)
 
 
 ## 本リポジトリの目的
@@ -40,6 +41,7 @@
 - [Clippy Lints](https://rust-lang.github.io/rust-clippy/master/)
 - [Rust Cook Book](https://rust-lang-nursery.github.io/rust-cookbook/)
 - [Safety-Critical Rust Coding Guidelines](https://coding-guidelines.arewesafetycriticalyet.org/)
+- [Edition Guide](https://doc.rust-jp.rs/edition-guide/)
 
 - 要チェックセッション
   - RustConf 2025
@@ -62,3 +64,4 @@
 ## [マクロ](macro.md)
 ## [unsafe](unsafe.md)
 ## [低レイヤー](low_layer.md)
+## [Rustバージョン](rust_version.md)
