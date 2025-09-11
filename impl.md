@@ -11,6 +11,7 @@
 - [newtypeパターンで定義した型に`Deref`トレイト・`DerefMut`トレイトを実装するかは慎重に判断する](#newtypeパターンで定義した型にderefトレイトderefmutトレイトを実装するかは慎重に判断する)
 - [値は使わないが、RAIIで副作用を起こすために変数に束縛したい場合は、`_`ではなく`_xxx`に束縛する](#値は使わないがraiiで副作用を起こすために変数に束縛したい場合は_ではなく_xxxに束縛する)
 - [warningを撲滅するときは、`#![deny(warnings)]`ではなく、`-D warnings`を使う](#warningを撲滅するときはdenywarningsではなく-d-warningsを使う)
+- [`Rc`を`clone()`するときは、`rc.clone()`ではなく`Rc::clone(&rc)`と書く](#rcをcloneするときはrccloneではなくrcclonercと書く)
 
 ## 有用なlintはデフォルトで有効にする
 
@@ -122,3 +123,10 @@
 ## warningを撲滅するときは、`#![deny(warnings)]`ではなく、`-D warnings`を使う
 
 - 参考：https://rust-unofficial.github.io/patterns/anti_patterns/deny-warnings.html
+
+## `Rc`を`clone()`するときは、`rc.clone()`ではなく`Rc::clone(&rc)`と書く
+
+- 理由：他の`clone()`呼出と区別を付きやすくすることで、パフォーマンスの問題が発生したときにディープコピーの箇所を見つけやすくするため
+
+- 参考：https://doc.rust-jp.rs/book-ja/ch15-04-rc.html
+
