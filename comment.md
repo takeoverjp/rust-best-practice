@@ -29,3 +29,7 @@
 ## 複雑な初期化が必要で、`no_run`を指定するドキュメントコードは、呼ばれない関数を定義する形でかく
 
 - 参考:https://rust-unofficial.github.io/patterns/idioms/rustdoc-init.html
+
+## 利用者が意識しなくていい関数は、`doc(hidden)`で見せないようにする
+
+- 参考:https://rust-lang.github.io/api-guidelines/documentation.html#rustdoc-does-not-show-unhelpful-implementation-details-c-hidden
