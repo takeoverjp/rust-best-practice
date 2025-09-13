@@ -28,3 +28,5 @@ struct CompileFailTest;
 
 - 参考：https://docs.rs/tokio/latest/tokio/time/fn.pause.html
 - 参考：https://docs.rs/tokio/latest/tokio/time/fn.advance.html
+
+## 複数スレッドの同時実行をサポートしていないテストは、cargo-nextestの使用を検討する
