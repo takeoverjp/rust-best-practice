@@ -1,7 +1,7 @@
 # async
 
 - [ログにはtracing](#ログにはtracing)
-- [backtrace](#backtrace)
+- [論理的なbacktraceを出力するときには、async-backtraceを使う](#論理的なbacktraceを出力するときにはasync-backtraceを使う)
 - [taskには名前をつける](#taskには名前をつける)
 - [tokio-consoleが簡単に使えるようにする](#tokio-consoleが簡単に使えるようにする)
 - [ライブラリはtokioに依存しないようにする](#ライブラリはtokioに依存しないようにする)
@@ -12,7 +12,7 @@
 
 ## ログにはtracing
 
-## backtrace
+## 論理的なbacktraceを出力するときには、[async-backtrace](https://github.com/tokio-rs/async-backtrace)を使う
 
 - 参考: [debug tool](https://gihyo.jp/article/2023/02/tfen007-rust-debug-tool)
 
