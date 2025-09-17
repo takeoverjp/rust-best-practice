@@ -73,3 +73,7 @@ async fn await_and_lock() {
 > 2. Aggregate the <async expression>s from each branch, including the disabled ones. If the branch is disabled, <async expression> is still evaluated, but the resulting future is not polled.
 
 - 参考：https://docs.rs/tokio/1.47.1/tokio/macro.select.html
+
+## actorモデルを採用する場合、既存のフレームワークが活用できないか検討する
+
+- https://actix.rs/docs/actix/
