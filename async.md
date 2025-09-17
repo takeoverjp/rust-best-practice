@@ -77,3 +77,6 @@ async fn await_and_lock() {
 ## actorモデルを採用する場合、既存のフレームワークが活用できないか検討する
 
 - https://actix.rs/docs/actix/
+- https://crates.io/crates/ractor
+- https://github.com/riker-rs/riker
+- https://ryhl.io/blog/actors-with-tokio/
