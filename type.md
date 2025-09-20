@@ -44,3 +44,9 @@ pub struct NewtonSeconds(pub f64);
 ## `Ord`, `PartialOrd`を実装するときは、本当に対象の型が表す情報に順序関係があるのかを考慮し、順序関係がないべきものには実装しないように気をつける
 
 - 大小関係がないenumなどに`Ord`, `PartialOrd`を実装すると、API利用者が誤って大小関係を前提としたコードを書いてしまう可能性がある
+
+## デストラクタではpanicしない
+
+- Panic時のunwind中にデストラクタでパニックした場合、ランタイムとしてできることはないので、即座に処理が停止する
+- 結果的に、中途半端な状態に陥る可能性がある
+- Finalisation in Destructors - Rust Design Patterns https://share.google/rFl5PrKn6K1lTpQJ0
