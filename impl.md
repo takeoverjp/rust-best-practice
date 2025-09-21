@@ -130,3 +130,6 @@
 
 - 参考：https://doc.rust-jp.rs/book-ja/ch15-04-rc.html
 
+## 要素をもつenumのバリアントを変換するときは、`std::mem::take`で不要な`clone`を避ける
+
+- https://rust-unofficial.github.io/patterns/idioms/mem-replace.html
