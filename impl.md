@@ -133,3 +133,7 @@
 ## 要素をもつenumのバリアントを変換するときは、`std::mem::take`で不要な`clone`を避ける
 
 - https://rust-unofficial.github.io/patterns/idioms/mem-replace.html
+
+## stackに確保した変数でdynamic dispatchする場合、deferred conditional initializationを使う
+
+- 参考:https://rust-unofficial.github.io/patterns/idioms/on-stack-dyn-dispatch.html
