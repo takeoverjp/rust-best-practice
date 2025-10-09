@@ -12,6 +12,11 @@
 - [値は使わないが、RAIIで副作用を起こすために変数に束縛したい場合は、`_`ではなく`_xxx`に束縛する](#値は使わないがraiiで副作用を起こすために変数に束縛したい場合は_ではなく_xxxに束縛する)
 - [warningを撲滅するときは、`#![deny(warnings)]`ではなく、`-D warnings`を使う](#warningを撲滅するときはdenywarningsではなく-d-warningsを使う)
 - [`Rc`を`clone()`するときは、`rc.clone()`ではなく`Rc::clone(&rc)`と書く](#rcをcloneするときはrccloneではなくrcclonercと書く)
+- [要素をもつenumのバリアントを変換するときは、`std::mem::take`で不要な`clone`を避ける](#要素をもつenumのバリアントを変換するときはstdmemtakeで不要なcloneを避ける)
+- [stackに確保した変数でdynamic dispatchする場合、deferred conditional initializationを使う](#stackに確保した変数でdynamic-dispatchする場合deferred-conditional-initializationを使う)
+- [`Option`型をイテレータとして処理するときは、`IntoIterator`トレイトを活用する](#option型をイテレータとして処理するときはintoiteratorトレイトを活用する)
+- [Closureに変数をキャプチャさせる場合、専用のブロックに専用の変数を定義する](#closureに変数をキャプチャさせる場合専用のブロックに専用の変数を定義する)
+- [(不採用) 拡張性のために、`#[non_exhaustive]`を使う](#不採用-拡張性のためにnon_exhaustiveを使う)
 
 ## 有用なlintはデフォルトで有効にする
 
@@ -145,3 +150,9 @@
 ## Closureに変数をキャプチャさせる場合、専用のブロックに専用の変数を定義する
 
 - 参考:https://rust-unofficial.github.io/patterns/idioms/pass-var-to-closure.html
+
+## (不採用) 拡張性のために、`#[non_exhaustive]`を使う
+
+- 理由：将来的にenumに新しいバリアントを追加したい場合に、破壊的変更を避けるため
+- 不採用の理由：利用者がenumの新しいバリアントに何を追加されるかを予測し、適切に処理することは事実上不可能なので
+- 参考：[#[non_exhaustive] and private fields for extensibility](https://rust-unofficial.github.io/patterns/idioms/priv-extend.html)
