@@ -141,3 +141,7 @@
 ## `Option`型をイテレータとして処理するときは、`IntoIterator`トレイトを活用する
 
 - 参考:https://rust-unofficial.github.io/patterns/idioms/option-iter.html
+
+## Closureに変数をキャプチャさせる場合、専用のブロックに専用の変数を定義する
+
+- 参考:https://rust-unofficial.github.io/patterns/idioms/pass-var-to-closure.html
